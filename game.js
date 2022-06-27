@@ -119,16 +119,21 @@ answerButtons.addEventListener("click", (e) => chooseAnswer(e));
 
 // **********************************************************************************
 // level 2
-let input;
+// 
+
+let input = document.getElementsByClassName("answer-input");
+let submitBtn = document.getElementById("submit-btn");
+let answerForm = document.getElementById("answer-form");
 
 function startLevel2() {
   console.log("started");
+  document.getElementById("answer-input").value = "";
   levelBtn1.style.visibility = "hidden";
   levelBtn2.style.visibility = "hidden";
   startBtn.style.visibility = "hidden";
   takeAQuestion = getRandomQuest();
   displayQuestion2(takeAQuestion);
-  //chooseAnswer(takeAQuestion);
+
 }
 
 function displayQuestion2(randomQuest) {
@@ -136,24 +141,24 @@ function displayQuestion2(randomQuest) {
   document.getElementById("image-question").src = randomQuest.question;
   document.getElementById("question-images").style.visibility = "visible";
   document.getElementById("points-sec").style.visibility = "visible";
-
-  input = document.createElement("input");
-  input.type = "text";
-  input.placeholder = "?";
-  input.className = "answer-input";
-  answerButtons.appendChild(input);
-  input.style.visibility = "visible";
-  input.value ="";
+  document.getElementById("answer-input").style.visibility = "visible";
+  document.getElementById("submit-btn").style.visibility = "visible";
 }
 
-function chooseAnswer2() {
+function chooseAnswer2(input) {
+  console.log("input value in choseAnswer2 ", input);
   
-  if (input.value.toLowercase() === takeAQuestion.title) {
+  if (input === takeAQuestion.title) {
     points++;
     document.getElementById("points").innerHTML = points;
+
     startLevel2();
   }
 }
-// input.addEventListener("input", chooseAnswer2(e));
+answerForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  let inputAnswer = document.getElementById("answer-input").value;
 
+  chooseAnswer2(inputAnswer);
+});
 
