@@ -45,6 +45,7 @@ body {
 #start-button {
     visibility: visible;
     padding: 1em 4em;
+    margin: 2em;
     background-color: rgb(250, 208, 0);
     border: 3px solid rgb(186, 3, 3);
     border-radius: 5%;
@@ -69,4 +70,28 @@ body {
     font-size: xx-large;
     padding: 0;
     margin: 0;
+}
+
+.level-btn {
+    visibility: visible;
+    padding: 0.5em 2em;
+    margin: 0.5em;
+    background-color: rgb(250, 208, 0);
+    border: 3px solid rgb(186, 3, 3);
+    border-radius: 5%;
+    font-weight: bold;
+    font-size: larger;
+}
+
+.answer-input{
+    visibility: hidden;
+    margin-right: 20em;
+    background-color: rgb(250, 208, 0);
+    border: 3px solid rgb(186, 3, 3);
+    border-radius: 5%;
+    font-weight: bold;
+    font-size: larger;
+    width: 10em;
+    height: 1.5em;
+    text-align: center;
 }
