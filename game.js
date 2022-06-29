@@ -384,9 +384,5 @@ let usersAnswersArr = [];
       finishDiv.className = "finish-div";
       finishDiv.innerHTML = "Muy bien!!!";
       clearInterval(countdown);
-      document.getElementById("points-sec").style.visibility = "visible";
-    }
-  // }
 
-
-
+  }
