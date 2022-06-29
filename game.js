@@ -151,6 +151,17 @@ function startGame() {
   levelBtn2.style.visibility = "hidden";
   startBtn.style.visibility = "hidden";
   startImage.style.visibility = "hidden";
+  
+  let time = 10;
+  document.getElementById("time").innerHTML = 10;
+  countdown = setInterval(count, 1000);
+
+  function count() {
+    time--;
+    time == 0 ? clearInterval(countdown) : countdown;
+    time == 0 ? startGame() : countdown;
+    document.getElementById("time").innerHTML = `${time}`;
+  }
   takeAQuestion = getRandomQuest();
   displayQuestion(takeAQuestion);
 }
@@ -178,6 +189,8 @@ function chooseAnswer(ev) {
     points++;
     document.getElementById("points").innerHTML = points;
     soundCorrect.play();
+  clearInterval(countdown);
+
 
     if (points === 10) {
       startLevel2();
@@ -196,6 +209,7 @@ function chooseAnswer(ev) {
 }
 
 answerButtons.addEventListener("click", (e) => chooseAnswer(e));
+
 
 function gameOver() {
   document.getElementById("answer-form").style.visibility = "hidden";
@@ -228,6 +242,7 @@ function startLevel2() {
   function count() {
     time--;
     time == 0 ? clearInterval(countdown) : countdown;
+    time == 0 ? startLevel2() : countdown;
     document.getElementById("time").innerHTML = `${time}`;
   }
 
