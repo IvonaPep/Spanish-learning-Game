@@ -7,7 +7,8 @@ body {
     position: absolute;
     max-width: 40%;
     margin-left: 40vw;
-    margin-top: 15em;
+    margin-top: 25em;
+
 }
 main{
     position: absolute;
@@ -209,6 +210,34 @@ button:active {
     transform: translateY(4px);
 }
 
+.answer-div {
+    width: 6em;
+    height: 1.5em;
+    position: relative;
+    margin: 1em 12em;
+    background-color:rgb(250, 208, 0);
+    border: 2px solid rgb(135, 37, 22);
+    text-align: center;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.finish-div {
+    position: absolute;
+    background-color: rgb(247, 247, 193);
+    border: 2px solid rgb(135, 37, 22);
+    width: 15em;
+    height: 6em;
+    margin-left: 14em;
+    padding-top: 4em;
+    text-align: center;
+    font-weight: bolder;
+    font-size: xx-large;
+    border-radius: 10%;
+    color: rgb(87, 24, 14);
+    box-shadow: 4px 8px grey;
+}
+
 @media (max-width: 780px){
 #start-game {
     flex-direction: column;
@@ -219,4 +248,23 @@ button:active {
     max-width: 60%;
     margin-left: 20vw;
 
-}}
+}
+.new-div{
+    position: absolute;
+    width:8em;
+    height: 6em;
+    margin-left: 2em;
+    margin-top: 4em;
+    padding-top: 4em;
+    padding-bottom: 0;
+}
+.finish-div{
+    position: absolute;
+    width:8em;
+    height: 6em;
+    margin-left: 2em;
+    margin-top: 4em;
+    padding-top: 4em;
+    padding-bottom: 0;
+}
+}

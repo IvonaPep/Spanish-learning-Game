@@ -30,13 +30,13 @@ const animalsArr = [
   {
     title: "oveja",
     question:
-      "https://cdn-icons.flaticon.com/png/512/2711/premium/2711858.png?token=exp=1656319435~hmac=bd55b79f602e6b15f9af6fcaab970407",
+      "https://cdn-icons.flaticon.com/png/128/3319/premium/3319395.png?token=exp=1656499435~hmac=00c8112be4193adf6109f3421648cfbf",
     answers: ["oveja", "gato", "oso"],
   },
   {
     title: "pajaro",
     question:
-      "https://cdn-icons.flaticon.com/png/512/2677/premium/2677104.png?token=exp=1656325868~hmac=a11ba7c281e3d5beb7da534f510af496",
+      "https://cdn-icons.flaticon.com/png/128/1496/premium/1496742.png?token=exp=1656499556~hmac=4eb69a14011423769aabaaaa06317ba4",
     answers: ["cerdo", "leon", "pajaro"],
   },
   {
@@ -98,13 +98,13 @@ const animalsArr = [
   {
     title: "toro",
     question:
-      "https://cdn-icons.flaticon.com/png/128/3819/premium/3819549.png?token=exp=1656405801~hmac=04740bf8301767586a91247edc286e40",
+      "https://cdn-icons-png.flaticon.com/128/2298/2298491.png",
     answers: ["toro", "cabra", "serpiente"],
   },
   {
     title: "lobo",
     question:
-      "https://cdn-icons.flaticon.com/png/128/3359/premium/3359935.png?token=exp=1656405709~hmac=73ce003f8739128538e0429b091fb180",
+      "https://cdn-icons-png.flaticon.com/128/2622/2622178.png",
     answers: ["serpiente", "gato", "lobo"],
   },
   {
@@ -114,13 +114,12 @@ const animalsArr = [
   },
 ];
 
+
+
 let soundCorrect = new Audio("sound_correct.mp3");
 let soundIncorrect = new Audio("sound_incorrect.mp3");
 let soundGameOver = new Audio("mixkit-sad-game-over-trombone-471 (1).wav");
 
-// soundCorrect.play();
-// soundIncorrect.play();
-//soundGameOver.play();
 
 const startBtn = document.getElementById("start-button");
 startBtn.addEventListener("click", startGame);
@@ -134,6 +133,9 @@ levelBtn1.addEventListener("click", startGame);
 
 const levelBtn2 = document.getElementById("level-btn2");
 levelBtn2.addEventListener("click", startLevel2);
+
+const levelBtn3 = document.getElementById("level-btn3");
+levelBtn3.addEventListener("click", startLevel3);
 
 const random = Math.floor(Math.random() * animalsArr.length);
 let takeAQuestion = "";
@@ -149,6 +151,7 @@ refreshButton.addEventListener("click", refreshPage);
 function startGame() {
   levelBtn1.style.visibility = "hidden";
   levelBtn2.style.visibility = "hidden";
+  levelBtn3.style.visibility = "hidden";
   startBtn.style.visibility = "hidden";
   startImage.style.visibility = "hidden";
   
@@ -219,6 +222,9 @@ function gameOver() {
   document.getElementById("answer-input").style.visibility = "hidden";
   document.getElementById("submit-btn").style.visibility = "hidden";
 
+  level2 = false;
+  level3 = false;
+
   let gameOverDiv = document.createElement("div");
   document.body.appendChild(gameOverDiv);
   gameOverDiv.className = "new-div";
@@ -227,14 +233,16 @@ function gameOver() {
 
 // // **********************************************************************************
 // level 2
-//
+//**********************************************************************************
 
 let input = document.getElementsByClassName("answer-input");
 let submitBtn = document.getElementById("submit-btn");
 let answerForm = document.getElementById("answer-form");
 let countdown;
+let level2 = false;
 
 function startLevel2() {
+  level2 = true;
   let time = 10;
   document.getElementById("time").innerHTML = 10;
   countdown = setInterval(count, 1000);
@@ -249,10 +257,12 @@ function startLevel2() {
   document.getElementById("answer-input").value = "";
   levelBtn1.style.visibility = "hidden";
   levelBtn2.style.visibility = "hidden";
+  levelBtn3.style.visibility = "hidden";
   startBtn.style.visibility = "hidden";
   startImage.style.visibility = "hidden";
   takeAQuestion = getRandomQuest();
   displayQuestion2(takeAQuestion);
+  
 }
 
 function displayQuestion2(randomQuest) {
@@ -265,7 +275,7 @@ function displayQuestion2(randomQuest) {
 }
 
 function chooseAnswer2(input) {
-  if (input === takeAQuestion.title) {
+  if (input.toLowerCase() === takeAQuestion.title) {
     soundCorrect.play();
     points++;
     document.getElementById("points").innerHTML = points;
@@ -283,9 +293,100 @@ function chooseAnswer2(input) {
   }
 }
 
-answerForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  let inputAnswer = document.getElementById("answer-input").value;
-  clearInterval(countdown);
-  chooseAnswer2(inputAnswer);
-});
+
+
+
+// *************************************************************************************************
+// Level 3
+
+// *************************************************************************************************
+
+let level3 = false;
+
+function startLevel3 (){
+  level3 = true;
+
+  document.getElementById("answer-input").style.visibility = "visible";
+  
+  document.getElementById("answer-buttons").style.visibility = "hidden";
+  document.getElementById("question-images").style.visibility = "hidden";
+  document.getElementById("submit-btn").style.visibility = "hidden";
+  document.getElementById("points-sec").style.visibility = "visible";
+
+  levelBtn1.style.visibility = "hidden";
+  levelBtn2.style.visibility = "hidden";
+  levelBtn3.style.visibility = "hidden";
+  startBtn.style.visibility = "hidden";
+  startImage.style.visibility = "hidden";
+  
+  let time = 30;
+  document.getElementById("time").innerHTML = 30;
+  countdown = setInterval(count, 1000);
+
+  function count() {
+    time--;
+    time == 0 ? finishLevel3() : countdown;
+    document.getElementById("time").innerHTML = `${time}`;
+  }
+
+}
+
+const animalsNameArr = ["oso", "toro", "pajaro", "lobo", "loro", "gato", "perro", "serpiente", "cerdo", "cangrejo", "vaca", "mono", "cabra", "raton", "conejo", "leon", "oveja", "burro", "caballo", "pato", "gallo"];
+
+let usersAnswersArr = [];
+
+  function chooseAnswer3(input) {
+
+    if (animalsNameArr.includes(input.toLowerCase())) {
+      soundCorrect.play();
+      points = points + 2;
+      document.getElementById("points").innerHTML = points;
+      document.getElementById("answer-input").value = "";
+
+      usersAnswersArr.push(input.toLowerCase());
+
+      let answerDiv = document.createElement("div");
+      document.body.appendChild(answerDiv);
+      answerDiv.className = "answer-div";
+      answerDiv.innerHTML = input.toLowerCase();
+      answerDiv.style.position = Math.floor(Math.random() * (100 + 1))
+      
+    } else {
+      soundIncorrect.play();
+      points--;
+      document.getElementById("points").innerHTML = points;
+      if (points < 0) {
+        soundGameOver.play();
+        gameOver();
+      }
+    }
+  };
+
+  answerForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    
+    let inputAnswer = document.getElementById("answer-input").value;
+  
+    
+    if(level2){
+      clearInterval(countdown);
+      chooseAnswer2(inputAnswer);
+    } else if (level3){
+      chooseAnswer3(inputAnswer);
+
+    };
+  });
+
+  function finishLevel3 (){
+    // if(points>15){
+      let finishDiv = document.createElement("div");
+      document.body.appendChild(finishDiv);
+      finishDiv.className = "finish-div";
+      finishDiv.innerHTML = "Muy bien!!!";
+      clearInterval(countdown);
+      document.getElementById("points-sec").style.visibility = "visible";
+    }
+  // }
+
+
+
