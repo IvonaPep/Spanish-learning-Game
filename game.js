@@ -30,7 +30,7 @@ const animalsArr = [
   {
     title: "oveja",
     question:
-      "https://cdn-icons.flaticon.com/png/128/3319/premium/3319395.png?token=exp=1656518340~hmac=4ec42e163bd0a98804d275a939dfaf10",
+      "https://cdn-icons-png.flaticon.com/512/2600/2600600.png",
     answers: ["oveja", "gato", "oso"],
   },
   {
@@ -72,7 +72,7 @@ const animalsArr = [
   {
     title: "mono",
     question:
-      "https://cdn-icons.flaticon.com/png/128/2938/premium/2938242.png?token=exp=1656518373~hmac=90e50e4963ba041422630dbb175fa446",
+      "https://cdn-icons-png.flaticon.com/128/1998/1998721.png",
     answers: ["mono", "pajaro", "leon"],
   },
   {
@@ -345,8 +345,6 @@ function startLevel3 (){
 }
 
   function chooseAnswer3(input) {
-  console.log("chooseAnswer3 ", input);
-
 
     if (animalsNameArr.includes(input.toLowerCase())) {
       soundCorrect.play();
@@ -395,5 +393,6 @@ function startLevel3 (){
       finishDiv.className = "finish-div";
       finishDiv.innerHTML = `${points} points. Muy bien!`;
       clearInterval(countdown);
+      setTimeout(refreshPage, 5000);
 
   }
