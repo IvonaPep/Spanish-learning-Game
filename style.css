@@ -213,14 +213,15 @@ button:active {
 }
 
 .answer-div {
-    width: 6em;
-    height: 1.5em;
+    flex-direction: row;
+    width: fit-content;
+    height: 1em;
     position: relative;
-    margin: 1em 12em;
+    margin: 0.5em 7em;
     background-color:rgb(250, 208, 0);
     border: 2px solid rgb(135, 37, 22);
     text-align: center;
-    font-size: larger;
+    font-size: medium;
     font-weight: bold;
 }
 

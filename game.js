@@ -286,7 +286,7 @@ function chooseAnswer2(input) {
     points++;
     document.getElementById("points").innerHTML = points;
 
-    if(points > 20){
+    if(points > 19){
       console.log("going to 3");
       level2 = false;
       level3 = true;
