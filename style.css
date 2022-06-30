@@ -1,5 +1,7 @@
 body {
     position: relative;
+    margin: 0;
+    padding: 0;
 }
 
 #start-img{
@@ -301,7 +303,7 @@ h2{
 
 #level-btn1, #level-btn2, #level-btn3 {
     position: relative;
-    padding: 1em 1em;
+    padding: 0.5em 1em;
     margin: 0.5em;
 } 
 

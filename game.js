@@ -234,6 +234,7 @@ function gameOver() {
   document.body.appendChild(gameOverDiv);
   gameOverDiv.className = "new-div";
   gameOverDiv.innerHTML = "Game Over";
+  setTimeout(refreshPage, 5000);
 }
 
 // // **********************************************************************************
