@@ -12,7 +12,7 @@ body {
 }
 main{
     position: absolute;
-    background-color: rgb(244, 244, 205);
+    background: linear-gradient(45deg, #fcf576, #f5bc1f, #f59242, #e43b3b);
     height: 100vh;
     width: 100vw;
      overflow: hidden;
@@ -189,7 +189,7 @@ main{
 
 .new-div {
     position: relative;
-    background-color: rgb(247, 247, 193);
+    background: linear-gradient(45deg, #fcf576, #f5bc1f, #cd6d1f, #cf2424);
     border: 2px solid rgb(135, 37, 22);
     width: 15em;
     height: 11em;
@@ -223,12 +223,12 @@ button:active {
 }
 
 .finish-div {
-    position: absolute;
-    background-color: rgb(247, 247, 193);
+    position: relative;
+    background: linear-gradient(-45deg, #fcf576, #f5bc1f, #e58e48, #d14848);
     border: 2px solid rgb(135, 37, 22);
     width: 15em;
     height: 6em;
-    margin-left: 14em;
+    margin-left: 18em;
     padding-top: 4em;
     text-align: center;
     font-weight: bolder;
@@ -238,20 +238,44 @@ button:active {
     box-shadow: 4px 8px grey;
 }
 
+h2{
+    visibility: hidden;
+    font-size: xx-large;
+}
+
+@media (max-width: 900px){
+    #start-game {
+        flex-direction: column;
+    }
+    #start-img{
+        max-width: 50vw;
+}
+#start-button {
+   padding: 1em 8em;
+}
+#level-btn1, #level-btn2, #level-btn3 {
+    padding: 0.5 5em;
+} 
+.finish-div {
+    margin-left: 6em;
+}
+.new-div{
+    margin-left: 6em;
+    margin-top: 3em;
+}
+}
+
 @media (max-width: 780px){
 #start-game {
     flex-direction: column;
-    margin-left: 3em;
-    position: relative;
 }
 #start-img{
-    max-width: 60%;
-    margin-left: 20vw;
-
+    margin-right: 10em;
+    padding-top: 5em;
 }
 .new-div{
     position: absolute;
-    width:8em;
+    width:9em;
     height: 6em;
     margin-left: 2em;
     margin-top: 4em;
@@ -267,4 +291,29 @@ button:active {
     padding-top: 4em;
     padding-bottom: 0;
 }
+
+.level-btn {
+    border-radius: 5%;
+    font-weight:bold;
+    font-size: medium;
+    width: 150px
 }
+
+#level-btn1, #level-btn2, #level-btn3 {
+    position: relative;
+    padding: 1em 1em;
+    margin: 1em;
+} 
+
+#start-button {
+    position: absolute;
+    padding: 0.5em 3em;
+    margin-top: 15em;
+    font-weight: bold;
+    font-size: larger;
+    box-shadow: 2px 4px grey;
+}
+
+h2{
+    font-size: large;
+}};
