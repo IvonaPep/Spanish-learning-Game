@@ -29,14 +29,12 @@ const animalsArr = [
   },
   {
     title: "oveja",
-    question:
-      "https://cdn-icons-png.flaticon.com/512/2600/2600600.png",
+    question: "https://cdn-icons-png.flaticon.com/512/2600/2600600.png",
     answers: ["oveja", "gato", "oso"],
   },
   {
     title: "pajaro",
-    question:
-      "https://cdn-icons-png.flaticon.com/128/3069/3069186.png",
+    question: "https://cdn-icons-png.flaticon.com/128/3069/3069186.png",
     answers: ["cerdo", "leon", "pajaro"],
   },
   {
@@ -71,8 +69,7 @@ const animalsArr = [
   },
   {
     title: "mono",
-    question:
-      "https://cdn-icons-png.flaticon.com/128/1998/1998721.png",
+    question: "https://cdn-icons-png.flaticon.com/128/1998/1998721.png",
     answers: ["mono", "pajaro", "leon"],
   },
   {
@@ -97,14 +94,12 @@ const animalsArr = [
   },
   {
     title: "toro",
-    question:
-      "https://cdn-icons-png.flaticon.com/128/2298/2298491.png",
+    question: "https://cdn-icons-png.flaticon.com/128/2298/2298491.png",
     answers: ["toro", "cabra", "serpiente"],
   },
   {
     title: "lobo",
-    question:
-      "https://cdn-icons-png.flaticon.com/128/6658/6658035.png",
+    question: "https://cdn-icons-png.flaticon.com/128/6658/6658035.png",
     answers: ["serpiente", "gato", "lobo"],
   },
   {
@@ -114,12 +109,9 @@ const animalsArr = [
   },
 ];
 
-
-
 let soundCorrect = new Audio("sound_correct.mp3");
 let soundIncorrect = new Audio("sound_incorrect.mp3");
 let soundGameOver = new Audio("mixkit-sad-game-over-trombone-471 (1).wav");
-
 
 const startBtn = document.getElementById("start-button");
 startBtn.addEventListener("click", startGame);
@@ -143,7 +135,29 @@ let takeAQuestion = "";
 const refreshButton = document.getElementById("refresh");
 
 let level3 = false;
-const animalsNameArr = ["oso", "toro", "pajaro", "lobo", "loro", "gato", "perro", "serpiente", "cerdo", "cangrejo", "vaca", "mono", "cabra", "raton", "conejo", "leon", "oveja", "burro", "caballo", "pato", "gallo"];
+const animalsNameArr = [
+  "oso",
+  "toro",
+  "pajaro",
+  "lobo",
+  "loro",
+  "gato",
+  "perro",
+  "serpiente",
+  "cerdo",
+  "cangrejo",
+  "vaca",
+  "mono",
+  "cabra",
+  "raton",
+  "conejo",
+  "leon",
+  "oveja",
+  "burro",
+  "caballo",
+  "pato",
+  "gallo",
+];
 let usersAnswersArr = [];
 
 const refreshPage = () => {
@@ -158,8 +172,7 @@ function startGame() {
   levelBtn3.style.visibility = "hidden";
   startBtn.style.visibility = "hidden";
   startImage.style.visibility = "hidden";
-  
-  
+
   let time = 10;
   document.getElementById("time").innerHTML = 10;
   countdown = setInterval(count, 1000);
@@ -197,8 +210,7 @@ function chooseAnswer(ev) {
     points++;
     document.getElementById("points").innerHTML = points;
     soundCorrect.play();
-  clearInterval(countdown);
-
+    clearInterval(countdown);
 
     if (points === 10) {
       startLevel2();
@@ -211,6 +223,9 @@ function chooseAnswer(ev) {
     document.getElementById("points").innerHTML = points;
     if (points < 0) {
       soundGameOver.play();
+      document.getElementById("answer-buttons").style.visibility = "hidden";
+      document.getElementById("question-images").style.visibility = "hidden";
+      document.getElementById("points-sec").style.visibility = "hidden";
       gameOver();
     }
   }
@@ -218,23 +233,23 @@ function chooseAnswer(ev) {
 
 answerButtons.addEventListener("click", (e) => chooseAnswer(e));
 
-
 function gameOver() {
+ 
+  level2 = false;
+  level3 = false;
+  let gameOverDiv = document.createElement("div");
+  document.body.appendChild(gameOverDiv);
+  gameOverDiv.className = "new-div";
+  gameOverDiv.innerHTML = "Game Over";
+  setTimeout(refreshPage, 5000);
+ 
   document.getElementById("answer-form").style.visibility = "hidden";
   document.getElementById("answer-buttons").style.visibility = "hidden";
   document.getElementById("question-images").style.visibility = "hidden";
   document.getElementById("points-sec").style.visibility = "hidden";
   document.getElementById("answer-input").style.visibility = "hidden";
   document.getElementById("submit-btn").style.visibility = "hidden";
-
-  level2 = false;
-  level3 = false;
-
-  let gameOverDiv = document.createElement("div");
-  document.body.appendChild(gameOverDiv);
-  gameOverDiv.className = "new-div";
-  gameOverDiv.innerHTML = "Game Over";
-  setTimeout(refreshPage, 5000);
+ 
 }
 
 // // **********************************************************************************
@@ -268,7 +283,6 @@ function startLevel2() {
   startImage.style.visibility = "hidden";
   takeAQuestion = getRandomQuest();
   displayQuestion2(takeAQuestion);
-  
 }
 
 function displayQuestion2(randomQuest) {
@@ -286,18 +300,20 @@ function chooseAnswer2(input) {
     points++;
     document.getElementById("points").innerHTML = points;
 
-    if(points > 19){
-      console.log("going to 3");
+    if (points > 19) {
+
       level2 = false;
       level3 = true;
       startLevel3();
     } else {
-    startLevel2();
-  }} else {
+      startLevel2();
+    }
+  } else {
     soundIncorrect.play();
     points--;
     document.getElementById("points").innerHTML = points;
     if (points < 0) {
+      document.getElementById('answer-input').disabled = true;
       soundGameOver.play();
       gameOver();
     }
@@ -305,18 +321,12 @@ function chooseAnswer2(input) {
   }
 }
 
-
-
-
 // *************************************************************************************************
 // Level 3
 
 // *************************************************************************************************
 
-
-
-
-function startLevel3 (){
+function startLevel3() {
   level3 = true;
 
   document.getElementById("answer-input").style.visibility = "visible";
@@ -332,7 +342,7 @@ function startLevel3 (){
   levelBtn3.style.visibility = "hidden";
   startBtn.style.visibility = "hidden";
   startImage.style.visibility = "hidden";
-  
+
   let time = 30;
   document.getElementById("time").innerHTML = 30;
   countdown = setInterval(count, 1000);
@@ -345,55 +355,61 @@ function startLevel3 (){
   chooseAnswer3(input);
 }
 
-  function chooseAnswer3(input) {
+let usedAnswers = [];
 
-    if (animalsNameArr.includes(input.toLowerCase())) {
-      soundCorrect.play();
-      points = points + 2;
-      document.getElementById("points").innerHTML = points;
-      document.getElementById("answer-input").value = "";
+function chooseAnswer3(input) {
+ 
 
+  if (animalsNameArr.includes(input.toLowerCase()) && !usedAnswers.includes(input.toLowerCase())) {
+    soundCorrect.play();
+    points = points + 2;
+    document.getElementById("points").innerHTML = points;
+    document.getElementById("answer-input").value = "";
+    let answerDiv = document.createElement("div");
+    document.body.appendChild(answerDiv);
+    answerDiv.className = "answer-div";
+    answerDiv.innerHTML = input.toLowerCase();
+    usedAnswers.push(input);
+  } else if(usedAnswers.includes(input.toLowerCase())) {
+    soundIncorrect.play();
+    points--;
+    document.getElementById("points").innerHTML = points;
+    document.getElementById("answer-input").value = "";
 
-      let answerDiv = document.createElement("div");
-      document.body.appendChild(answerDiv);
-      answerDiv.className = "answer-div";
-      answerDiv.innerHTML = input.toLowerCase();
-      answerDiv.style.position = Math.floor(Math.random() * (100 + 1))
-      
     } else {
-      soundIncorrect.play();
-      points--;
-      document.getElementById("points").innerHTML = points;
-      document.getElementById("answer-input").value = "";
-      if (points < 0) {
-        soundGameOver.play();
-        gameOver();
-      }
+    soundIncorrect.play();
+    points--;
+    document.getElementById("points").innerHTML = points;
+    document.getElementById("answer-input").value = "";
+    if (points < 0) {
+      document.getElementById("answer-input").disabled = true;
+      soundGameOver.play();
+      gameOver();
     }
-  };
-
-  answerForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    
-    let inputAnswer = document.getElementById("answer-input").value;
-  
-    
-    if(level2){
-      clearInterval(countdown);
-      chooseAnswer2(inputAnswer);
-    } else if (level3){
-      chooseAnswer3(inputAnswer);
-
-    };
-  });
-
-  function finishLevel3 (){
-  
-      let finishDiv = document.createElement("div");
-      document.body.appendChild(finishDiv);
-      finishDiv.className = "finish-div";
-      finishDiv.innerHTML = `${points} points. Muy bien!`;
-      clearInterval(countdown);
-      setTimeout(refreshPage, 5000);
-
   }
+}
+
+answerForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  let inputAnswer = document.getElementById("answer-input").value;
+
+  if (level2) {
+    clearInterval(countdown);
+    chooseAnswer2(inputAnswer);
+  } else if (level3) {
+    chooseAnswer3(inputAnswer);
+  }
+});
+
+function finishLevel3() {
+  let finishDiv = document.createElement("div");
+  document.body.appendChild(finishDiv);
+  finishDiv.className = "finish-div";
+  finishDiv.innerHTML = `${points} points. Muy bien!`;
+  clearInterval(countdown);
+  document.getElementById("answer-input").style.visibility = "hidden";
+  document.getElementById("points-sec").style.visibility = "hidden";
+  setTimeout(refreshPage, 5000);
+}
+

@@ -214,14 +214,14 @@ button:active {
 
 .answer-div {
     flex-direction: row;
-    width: fit-content;
+    width: 8em;
     height: 1em;
     position: relative;
     margin: 0.5em 7em;
     background-color:rgb(250, 208, 0);
     border: 2px solid rgb(135, 37, 22);
     text-align: center;
-    font-size: medium;
+    font-size: large;
     font-weight: bold;
 }
 
